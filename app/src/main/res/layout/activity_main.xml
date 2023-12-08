@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
-    android:background="@color/white">
+    tools:context=".view.MainActivity">
 
     <View
         android:id="@+id/view_view"
@@ -97,6 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="64dp"
         android:text="@string/btn_new_phrase"
+        android:textColor="@color/white"
         android:textAllCaps="true"
         android:backgroundTint="@color/red"/>
 
