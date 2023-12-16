@@ -2,6 +2,8 @@ package dev.jvitor.motivacao.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import dev.jvitor.motivacao.infra.Constants
 import dev.jvitor.motivacao.infra.Phrase
 import dev.jvitor.motivacao.infra.SecurityPreferences
@@ -10,11 +12,27 @@ import kotlin.random.Random
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val security = SecurityPreferences(application)
+    private val name = MutableLiveData(getValueName())
 
     // Valores para selecionar as frases
     private val all = Constants.Names.ALL_INCLUSIVE
     private val happy = Constants.Names.HAPPY
     private val sunny = Constants.Names.SUNNY
+
+    /* Função que está sendo observada ao ser alterada. Responsável por verificar e alterar
+    o nome de usuário e por redirecionar para a tela secundária se o nome estiver vazio ao iniciar. */
+    fun setName() : LiveData<String>{
+        return name
+    }
+    // Função responsável por alterar a mensagem do nome
+    fun message(name: String) : String{
+        return "Olá, ${name}!"
+    }
+
+    // Função responsável por guardar os nomes de usuários
+    private fun getValueName() : String{
+        return security.getString(Constants.Names.USER_NAME)
+    }
 
     // Lista de frases
     private val listPhrases = listOf(
@@ -58,10 +76,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun getPhrases(value: Int) : String {
         val filtered = listPhrases.filter{ it.categoryId == value || value == all }
         return filtered[Random.nextInt(filtered.size)].description
-    }
-
-    // Função responsável por guardar os nomes de usuários
-    fun getValueName() : String{
-        return security.getString(Constants.Names.USER_NAME)
     }
 }

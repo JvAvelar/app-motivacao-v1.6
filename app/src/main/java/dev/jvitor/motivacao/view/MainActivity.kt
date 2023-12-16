@@ -1,6 +1,5 @@
 package dev.jvitor.motivacao.view
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -66,22 +65,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+    // Função responsável por observar a troca de nome e atribuir o novo nome.
+    private fun changeUserName() {
+        viewModel.setName().observe(this) {
+            if (it.isNotEmpty()){
+                binding.textviewHelloName.text = viewModel.message(it)
+            }
+            else {
+                changeForUserActivity()
+            }
+        }
+    }
 
     // Função responsável por trocar a tela principal para a tela de inserir o nome do usuario
     private fun changeForUserActivity() {
         startActivity(Intent(this, UserActivity::class.java))
         finish()
-    }
-
-    // Função responsável por alterar o nome do usuario para o que foi passado
-    @SuppressLint("SetTextI18n")
-    private fun changeUserName() {
-        val name = viewModel.getValueName()
-        if (name == "") {
-            changeForUserActivity()
-        } else {
-            binding.textviewHelloName.text = "Olá, ${name}!"
-        }
     }
 
     // Função responsável por alterar as frases

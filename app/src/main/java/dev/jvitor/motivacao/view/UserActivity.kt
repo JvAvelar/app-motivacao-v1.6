@@ -33,15 +33,15 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     // Função responsável por validar o campo de nome de usuario
-    private fun verifyName() {
+   private fun verifyName(){
         val name = binding.editYourName.text.toString()
-        if (name != "") {
-            viewModel.saveValueName(name)
-            changeForMainActivity()
-        } else {
-            Toast.makeText(this, "Insira seu nome.", Toast.LENGTH_SHORT).show()
+            if (viewModel.verifyName(name)) {
+                viewModel.saveValueName(name)
+                changeForMainActivity()
+            }else {
+                Toast.makeText(this, "Insira seu nome.", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
     // Função responsável por trocar de página e finalizar a anterior.
     private fun changeForMainActivity() {
