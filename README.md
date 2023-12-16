@@ -1,6 +1,6 @@
 Fiz este projeto com o intuito de fixar conceitos visto em aulas.
 
-Utilizei ViewModel para criação da lógica pesada do App, SharedPreferences para armazenar e retornar os nomes inseridos pelo usuário, pois não se trata de um App com muitas informações salvas ao mesmo tempo, então aqui temos ganho de performance.
+Utilizei ViewModel para criação da lógica pesada do App, LiveData para observação na alteração do nome e caso seja vazio, redirecione diretamente para a tela de inserção do nome (ao instalar o App), SharedPreferences para armazenar e retornar os nomes inseridos pelo usuário, pois não se trata de um App com muitas informações salvas ao mesmo tempo, então aqui temos ganho de performance.
 
 Neste App a tela primária pede ao usuário seu nome, logo após clicar no botão e salvar, é direcionado para a tela principal.
 
