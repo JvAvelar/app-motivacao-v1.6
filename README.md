@@ -1,4 +1,4 @@
-Fiz este projeto com o intuito de fixar conceitos visto em aulas.
+Este projeto tem o intuito de fixar os conceitos. 
 
 Utilizei ViewModel para criação da lógica pesada do App, LiveData para observação na alteração do nome e caso seja vazio, redirecione diretamente para a tela de inserção do nome (ao instalar o App), SharedPreferences para armazenar e retornar os nomes inseridos pelo usuário, pois não se trata de um App com muitas informações salvas ao mesmo tempo, então aqui temos ganho de performance.
 
